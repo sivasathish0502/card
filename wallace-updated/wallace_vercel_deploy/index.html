@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallace Cartwright & Co Ltd | Engineering Capabilities</title>
+<style>
+  :root{
+    --navy:#1c1f22;
+    --navy2:#25292d;
+    --teal:#d9770e;
+    --teal-light:#f5a742;
+    --ink:#1a1a1a;
+    --grey:#61605c;
+    --line:#e4e1db;
+    --bg:#f8f6f2;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  img{max-width:100%;height:auto;display:block;}
+  body{overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
+    font-weight:700;
+    color:var(--teal);
+    margin-bottom:10px;
+  }
+  h1,h2,h3,h4{font-weight:700;color:var(--navy);}
+  h2{font-size:32px;margin-bottom:14px;}
+  h3{font-size:20px;margin-bottom:8px;}
+  p{color:var(--grey);}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(28,31,34,0.97);
+    backdrop-filter:blur(6px);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1160px;margin:0 auto;
+  }
+  .brand{color:#fff;font-size:19px;font-weight:800;letter-spacing:0.5px;display:flex;align-items:center;gap:10px;}
+  .brand .mark{
+    width:34px;height:34px;border-radius:6px;
+    background:linear-gradient(135deg,var(--teal),var(--teal-light));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;color:var(--navy);font-size:16px;
+  }
+  .navlinks{display:flex;gap:28px;list-style:none;}
+  .navlinks a{color:#ded6c8;font-size:14.5px;font-weight:600;transition:color .2s;}
+  .navlinks a:hover{color:#fff;}
+  .navcta{
+    background:var(--teal);color:#fff;padding:10px 18px;border-radius:6px;
+    font-size:14px;font-weight:700;
+  }
+  .navcta:hover{background:var(--teal-light);color:var(--navy);}
+  .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
+
+  /* Hero */
+  .hero{
+    background:radial-gradient(ellipse at top right, #2c2f33 0%, var(--navy) 55%);
+    color:#fff;padding:90px 0 100px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;bottom:-160px;width:480px;height:480px;
+    border-radius:50%;background:radial-gradient(circle, rgba(217,119,14,0.25), transparent 70%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:50px;align-items:center;position:relative;z-index:2;}
+  .hero h1{color:#fff;font-size:46px;line-height:1.15;margin-bottom:20px;}
+  .hero h1 span{color:var(--teal-light);}
+  .hero p{color:#d9d3c8;font-size:17px;max-width:520px;margin-bottom:30px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:6px;font-weight:700;font-size:14.5px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(217,119,14,0.35);}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,0.35);color:#fff;}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+  .hero-stats{display:flex;gap:36px;margin-top:44px;flex-wrap:wrap;}
+  .hero-stats div b{display:block;font-size:28px;color:#fff;}
+  .hero-stats div span{font-size:13px;color:#cbb896;}
+  .hero-visual{
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);
+    border-radius:14px;padding:14px;
+  }
+  .hero-visual img{border-radius:8px;}
+
+  /* Domains strip */
+  .domains{padding:56px 0;background:var(--white);border-bottom:1px solid var(--line);}
+  .domains-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .domain-chip{
+    text-align:center;padding:20px 10px;border-radius:10px;border:1px solid var(--line);
+    transition:.2s;
+  }
+  .domain-chip:hover{border-color:var(--teal);background:#fdf2e4;}
+  .domain-chip .ico{
+    width:46px;height:46px;margin:0 auto 12px;border-radius:10px;
+    background:linear-gradient(135deg,var(--teal),#b3600a);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;
+  }
+  .domain-chip h4{font-size:13.5px;color:var(--navy);}
+
+  /* Section generic */
+  section{padding:88px 0;}
+  .section-head{max-width:700px;margin:0 auto 50px;text-align:center;}
+  .section-head p{font-size:16px;}
+  .alt{background:var(--white);}
+
+  /* Service blocks */
+  .service{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+    padding:64px 0;border-bottom:1px solid var(--line);
+  }
+  .service:last-child{border-bottom:none;}
+  .service.reverse .service-media{order:2;}
+  .service.reverse .service-text{order:1;}
+  .service-media img{border-radius:12px;box-shadow:0 20px 40px rgba(28,31,34,0.12);border:1px solid var(--line);}
+  .service-media{display:flex;flex-direction:column;gap:14px;}
+  .service-media .two-up{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .tag{
+    display:inline-block;background:#fbeedb;color:var(--teal);font-size:12px;font-weight:700;
+    padding:5px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase;
+  }
+  .service ul{margin:18px 0;padding-left:20px;}
+  .service li{margin-bottom:8px;color:var(--ink);font-size:15px;}
+  .meta-row{display:flex;gap:24px;margin-top:22px;flex-wrap:wrap;}
+  .meta-box{
+    background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;flex:1;min-width:200px;
+  }
+  .meta-box h5{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--teal);margin-bottom:6px;}
+  .meta-box p{font-size:13.5px;color:var(--grey);margin:0;}
+
+  /* Use cases */
+  .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .case-card{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    transition:.2s;
+  }
+  .case-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(28,31,34,0.1);}
+  .case-card img{height:180px;width:100%;object-fit:contain;background:var(--bg);}
+  .case-body{padding:22px;}
+  .case-body .tag{background:#efece6;color:#4a4640;}
+  .case-body p{font-size:14px;margin-top:10px;}
+  .case-body .tools{margin-top:14px;font-size:12.5px;color:var(--navy);font-weight:600;}
+
+  /* Why us */
+  .why-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+  .why-list{list-style:none;margin-top:24px;}
+  .why-list li{
+    display:flex;gap:14px;margin-bottom:20px;align-items:flex-start;
+  }
+  .why-list .num{
+    flex:none;width:34px;height:34px;border-radius:8px;background:var(--navy);color:var(--teal-light);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;
+  }
+  .why-list h4{font-size:16px;margin-bottom:4px;}
+  .why-list p{font-size:14px;}
+  .tools-strip{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px;
+  }
+  .tool-pill{
+    background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-align:center;font-size:13px;font-weight:700;
+  }
+  .tool-pill span{display:block;color:var(--teal-light);font-size:11px;font-weight:600;margin-top:4px;}
+
+  /* Tech / lifecycle */
+  .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
+  .tech-card{
+    background:var(--white);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:left;
+  }
+  .tech-card img{border-radius:8px;margin-bottom:14px;height:120px;width:100%;object-fit:contain;background:var(--bg);}
+  .tech-card h4{font-size:15px;margin-bottom:6px;}
+  .tech-card p{font-size:13px;}
+
+  /* CTA band */
+  .cta-band{
+    background:linear-gradient(120deg,var(--navy),#0c3145);color:#fff;text-align:center;
+    padding:70px 0;
+  }
+  .cta-band h2{color:#fff;}
+  .cta-band p{color:#d9d3c8;max-width:600px;margin:0 auto 28px;}
+
+  /* Footer */
+  footer{background:var(--navy);color:#d9d3c8;padding:56px 0 26px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);}
+  .foot-grid h4{color:#fff;font-size:14px;margin-bottom:16px;}
+  .foot-grid p, .foot-grid a{font-size:13.5px;color:#b6ab98;display:block;margin-bottom:10px;}
+  .foot-grid a:hover{color:#fff;}
+  .foot-bottom{padding-top:22px;display:flex;justify-content:space-between;font-size:12.5px;color:#8c8477;flex-wrap:wrap;gap:10px;}
+
+
+  /* ---------- Form additions ---------- */
+  .field{min-width:0;}
+  .contact-card input,.contact-card textarea{display:block;width:100%;min-width:0;max-width:100%;}
+  .contact-card textarea{resize:vertical;}
+  .hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;}
+  .field-error{display:none;color:#b3261e;font-size:12.5px;margin-top:6px;}
+  .field.invalid .field-error{display:block;}
+  .field.invalid input,.field.invalid textarea{border-color:#b3261e!important;}
+  .form-status{display:none;padding:12px 14px;border-radius:8px;font-size:14px;line-height:1.5;}
+  .form-status.show{display:block;}
+  .form-status.success{background:#e8f5ec;color:#1e6b3a;border:1px solid #b7dfc4;}
+  .form-status.error{background:#fdecea;color:#b3261e;border:1px solid #f3b9b4;}
+  #submitBtn[disabled]{opacity:.7;cursor:not-allowed!important;transform:none;box-shadow:none;}
+
+  /* ---------- Responsive safety ---------- */
+  .brand-text{min-width:0;}
+  .btn{max-width:100%;text-align:center;}
+  .service>*,.hero-grid>*,.why-grid>*,.foot-grid>*{min-width:0;}
+  .foot-grid p,.foot-grid a{overflow-wrap:anywhere;}
+  h1,h2,h3,h4,p,li{overflow-wrap:break-word;}
+
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;}
+    .domains-grid{grid-template-columns:repeat(3,1fr);}
+    .service{grid-template-columns:1fr;gap:30px;}
+    .service.reverse .service-media{order:1;}
+    .service.reverse .service-text{order:2;}
+    .cases-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .tech-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .navlinks{display:none;}
+    .menu-toggle{display:block;}
+
+    /* mobile / tablet navigation */
+    .nav{gap:12px;}
+    .navcta{margin-left:auto;}
+    .menu-toggle{min-width:44px;min-height:44px;line-height:1;padding:0;}
+    .navlinks.open{
+      display:flex;flex-direction:column;gap:0;
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--navy);
+      padding:6px 24px 14px;border-top:1px solid rgba(255,255,255,0.1);
+      max-height:calc(100vh - 70px);overflow-y:auto;
+    }
+    .navlinks.open li{border-bottom:1px solid rgba(255,255,255,0.08);}
+    .navlinks.open li:last-child{border-bottom:none;}
+    .navlinks.open a{display:block;padding:14px 0;font-size:15px;}
+
+    .case-card img{height:auto;}
+    .tech-card img{height:150px;}
+  }
+
+  /* Tablet */
+  @media(max-width:768px){
+    section{padding:64px 0;}
+    .hero{padding:64px 0 72px;}
+    .hero h1{font-size:38px;}
+    .hero-visual{padding:10px;}
+    .section-head{margin-bottom:36px;}
+    h2{font-size:28px;}
+    .service{padding:44px 0;}
+    .contact-card{padding:28px!important;}
+    .contact-card input,.contact-card textarea{font-size:16px!important;} /* stops iOS zoom-on-focus */
+  }
+
+  /* Small tablet / large phone */
+  @media(max-width:600px){
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .tech-grid{grid-template-columns:1fr;}
+    .tech-card img{height:auto;}
+  }
+
+  /* Mobile */
+  @media(max-width:480px){
+    .container{padding:0 18px;}
+    .nav{padding:12px 18px;}
+    .navlinks.open{padding-left:18px;padding-right:18px;}
+    .brand{font-size:13px;gap:8px;letter-spacing:.3px;line-height:1.25;}
+    .brand .mark{width:30px;height:30px;font-size:14px;flex:none;}
+    /* header button hidden on phones: the menu has a Contact link and the hero has CTAs */
+    .navcta{display:none;}
+    .menu-toggle{margin-left:auto;}
+    section{padding:52px 0;}
+    .hero{padding:48px 0 56px;}
+    .hero h1{font-size:30px;margin-bottom:16px;}
+    .hero p{font-size:15.5px;margin-bottom:24px;}
+    .hero-ctas{flex-direction:column;gap:12px;}
+    .hero-ctas .btn{width:100%;}
+    .hero-stats{gap:28px;margin-top:32px;}
+    .hero-stats div b{font-size:24px;}
+    .domains{padding:40px 0;}
+    .domains-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .domains-grid .domain-chip:last-child{grid-column:1 / -1;}
+    h2{font-size:24px;}
+    h3{font-size:18px;}
+    .section-head{margin-bottom:28px;}
+    .service{padding:36px 0;gap:24px;}
+    .service-media .two-up{gap:12px;}
+    .meta-row{gap:14px;}
+    .meta-box{min-width:0;flex:1 1 100%;}
+    .case-body{padding:18px;}
+    .tools-strip{gap:10px;}
+    .tool-pill{padding:14px 10px;}
+    .cta-band{padding:52px 0;}
+    .contact-card{padding:20px 16px!important;}
+    .form-row{grid-template-columns:1fr!important;}
+    #submitBtn{width:100%;}
+    footer{padding:44px 0 22px;}
+    .foot-bottom{flex-direction:column;}
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="mark">WC</span><span class="brand-text">WALLACE CARTWRIGHT & CO LTD</span></div>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#services">Capabilities</a></li>
+      <li><a href="#cases">Use Cases</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="navcta">Get in Touch</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--teal-light)">Engineering Capabilities</div>
+      <h1>Multi-domain engineering, <span>under one roof.</span></h1>
+      <p>Wallace Cartwright & Co Ltd delivers integrated Mechanical, Electronics, Controls and Software engineering services — backed by industry leading tools and over 50 years of automotive, power-generation, agricultural machinery and rail expertise across our group companies.</p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-primary">Explore Capabilities</a>
+        <a href="#contact" class="btn btn-ghost">Talk to Our Team</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>5</b><span>Engineering Domains</span></div>
+        <div><b>50+</b><span>Years Group Experience</span></div>
+        <!-- <div><b>10+</b><span>Specialist Engineers</span></div> -->
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/business-people-talking-meeting-table.jpg" alt="3D welding fixture design" width="5760" height="3840" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="domains" id="domains">
+  <div class="container">
+    <div class="domains-grid">
+      <div class="domain-chip"><div class="ico">D</div><h4>Design Engineering</h4></div>
+      <div class="domain-chip"><div class="ico">C</div><h4>CAE — FEA / CFD</h4></div>
+      <div class="domain-chip"><div class="ico">T</div><h4>Technical authoring</h4></div>
+      <div class="domain-chip"><div class="ico">S</div><h4>System Controls</h4></div>
+      <div class="domain-chip"><div class="ico">P</div><h4>Software Engineering</h4></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Our Capabilities</div>
+      <h2>Engineering domains we serve</h2>
+      <p>From concept design to validated, production-ready systems — our teams work across the full engineering lifecycle.</p>
+    </div>
+
+    <!-- Design Engineering -->
+    <div class="service">
+      <div class="service-text">
+        <span class="tag">Design Engineering</span>
+        <h3>Concept to detail design of components and sub-systems</h3>
+        <p>Full design lifecycle support for automotive and industrial components, from early concept through to manufacturing-ready detail design.</p>
+        <ul>
+          <li>2D to 3D conversion</li>
+          <li>⁠Concept to detail design of sheet metal components</li>
+          <li>⁠Manufacturing drawings with GD&T</li>
+          <li>⁠Exposure to DFMEA tools</li>
+          <li>⁠Welding fixture, jig, gauge & fixture design</li>
+          <li>Design optimization & VA/VE studies</li>
+          <li>Process design support — control plan / PFMEA</li>
+        </ul>
+        <div class="meta-row">
+          <div class="meta-box"><h5>Tools</h5><p>CATIA V6 3DX (2 licenses, UK shareable) &middot; 2 high-end CAD systems</p></div>
+          <div class="meta-box"><h5>Team</h5><p>3 engineers, avg. 5+ yrs experience — GD&T, DMU packaging, PPAP exposure</p></div>
+        </div>
+      </div>
+      <div class="service-media">
+        <img src="images/design-fixture.png" alt="Welding fixture 3D design" width="759" height="717" decoding="async" loading="lazy">
+        <div class="two-up">
+          <img src="images/design-concept.png" alt="Concept to final design" width="561" height="527" decoding="async" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- CAE -->
+    <div class="service reverse">
+      <div class="service-text">
+        <span class="tag">CAE — FEA / CFD</span>
+        <h3>Simulation-driven structural & flow validation</h3>
+        <p>Advanced structural and fluid simulation to validate designs before they reach the shop floor — reducing rework and accelerating time to market.</p>
+        <ul>
+          <li>Linear / non-linear FEA analysis</li>
+          <li>Random vibration & fatigue analysis</li>
+          <li>Structural optimization studies</li>
+          <li>Flow back-pressure estimation</li>
+          <li>Multi-phase flow & phase change simulation</li>
+          <li>Flow-based design optimization studies</li>
+        </ul>
+        <div class="meta-row">
+          <div class="meta-box"><h5>Tools</h5><p>ANSYS Mechanical &middot; ANSYS Fluent</p></div>
+          <div class="meta-box"><h5>Team</h5><p>2 engineers, avg. 10+ yrs experience — proficient in ANSYS Mechanical & Fluent</p></div>
+        </div>
+      </div>
+      <div class="service-media">
+        <img src="images/cae-fea.jpg" alt="CFD back-pressure simulation" width="1197" height="517" decoding="async" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Technical Writing -->
+    <div class="service">
+      <div class="service-text">
+        <span class="tag"> Technical Authoring</span>
+        <h3>Scalable, multi-format technical documentation</h3>
+        <p>Structured, single-source authoring that publishes cleanly across every format your customers need.</p>
+        <ul>
+          <li>Manufacturing procedures & processes</li>
+          <li>⁠Technical product information</li>
+          <li>Product user guide</li>
+          <li>Warranty documentation</li>
+          <li>⁠Quality control processes</li>
+          <li>⁠Hhealth & safety guides</li>
+        </ul>
+        <div class="meta-row">
+          <div class="meta-box"><h5>Tools</h5><p>Oxygen XML — publish PDF / Word / HTML from a single source</p></div>
+          <div class="meta-box"><h5>Team</h5><p>1 engineer, 10+ yrs experience — manual templating & CAD-sourced imagery</p></div>
+        </div>
+      </div>
+      <div class="service-media">
+        <img src="images/co-workers-discussing-last-financial-analysis_1139-219.avif" alt="Documentation and software lifecycle process" width="740" height="494" decoding="async" loading="lazy">
+      </div>
+    </div>
+
+    <!-- System Controls -->
+    <div class="service reverse">
+      <div class="service-text">
+        <span class="tag">System Controls Engineering</span>
+        <h3>Model-based development for embedded control systems</h3>
+        <p>End-to-end MBD workflow — from control model development through automated testing to hardware validation.</p>
+        <ul>
+          <li>MATLAB Simulink models for system control requirements</li>
+          <li>Automated software-level testing with what-if scenario generation</li>
+          <li>HMI display programming</li>
+          <li>Hardware-in-the-loop testing with MATLAB code</li>
+        </ul>
+        <div class="meta-row">
+          <div class="meta-box"><h5>Tools</h5><p>MATLAB Simulink &middot; TPT CAN software &middot; PEEK CAN adaptors</p></div>
+          <div class="meta-box"><h5>Team</h5><p>4 engineers, avg. 5+ yrs experience — CAN tools, Vector CAN products</p></div>
+        </div>
+      </div>
+      <div class="service-media">
+        <img src="images/hmi-display.jpg" alt="HMI display development" width="1544" height="914" decoding="async" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Software Engineering -->
+    <div class="service">
+      <div class="service-text">
+        <span class="tag">Software Engineering</span>
+        <h3>Applications for CAN-enabled devices & diagnostics</h3>
+        <p>Custom software for displaying, processing and analyzing data from connected hardware — from web apps to machine vision.</p>
+        <ul>
+          <li>Web & standalone applications for CAN-enabled devices</li>
+          <li>Java / Python / web services development</li>
+          <li>SQL database tools</li>
+          <li>Signal processing with Python</li>
+          <li>Machine vision & machine learning with Python</li>
+        </ul>
+        <div class="meta-row">
+          <div class="meta-box"><h5>Tools</h5><p>OBD tools UI &middot; compatible test hardware</p></div>
+          <div class="meta-box"><h5>Team</h5><p>Engineers, avg. 4+ yrs experience — Java, SQL, ML/CV in Python</p></div>
+        </div>
+      </div>
+      <div class="service-media">
+        <img src="images/software-eng2.png" alt="OBD tools UI development" width="600" height="371" decoding="async" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="cases">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Proven Delivery</div>
+      <h2>Use cases</h2>
+      <p>A sample of engineering problems our teams have modelled, simulated and validated end to end.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <img src="images/def-sensor.jpg" alt="DEF sensor level monitoring" width="1465" height="721" decoding="async" loading="lazy">
+        <div class="case-body">
+          <span class="tag">Controls</span>
+          <h3>DEF sensor level monitoring</h3>
+          <p>Developed a MATLAB Simulink model to monitor DEF concentration, temperature and level — generated C code, flashed to controller, and validated against the physical component.</p>
+          <div class="tools">MATLAB Simulink &middot; TPT &middot; CAN Analyzer &middot; PEEK CAN interface</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <img src="images/Fuel-Injection.webp" alt="Fuel Injection flow study" width="800" height="641" decoding="async" loading="lazy">
+        <div class="case-body">
+          <span class="tag">CFD</span>
+          <h3>Fuel Injection Flow Study</h3>
+          <p>Validated a fuel injection system model — simulating fuel spray, multiphase flow, atomization and combustion-related flow behaviour, while analysing spray distribution, mixing uniformity and pressure drop.</p>
+          <div class="tools">ANSYS Fluent &middot; ANSYS SpaceClaim</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <img src="images/Piston.webp" alt="Piston FEA Study" width="800" height="534" decoding="async" loading="lazy">
+        <div class="case-body">
+          <span class="tag">FEA</span>
+          <h3>Piston FEA Study</h3>
+          <p>Performed finite element analysis of an engine piston — modelling the piston geometry, material properties and operating loads, while evaluating von Mises stress, total deformation, thermal stress and fatigue life to identify critical regions and validate structural integrity.</p>
+          <div class="tools">ANSYS Mechanical &middot; ANSYS SpaceClaim</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container why-grid">
+    <div>
+      <div class="eyebrow">Why Wallace Cartwright & Co Ltd</div>
+      <h2>One partner, every engineering discipline</h2>
+      <p>We bring mechanical, electronics and software engineering together under one roof — backed by decades of automotive domain depth.</p>
+      <ul class="why-list">
+        <li>
+          <div class="num">1</div>
+          <div><h4>Multiple domains, one team</h4><p>Core engineering skill sets spanning Mechanical, Electronics & Software Engineering services — no handoffs between vendors.</p></div>
+        </li>
+        <li>
+          <div class="num">2</div>
+          <div><h4>Industry-leading toolchains</h4><p>Hands-on expertise with CATIA V6 3DX, MATLAB Simulink with TPT, ANSYS FEA & CFD, and Python ML programming.</p></div>
+        </li>
+        <li>
+          <div class="num">3</div>
+          <div><h4>Deep automotive heritage</h4><p>Technical expertise in the automotive domain built over 50+ years through our group companies.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="tools-strip">
+        <div class="tool-pill">CATIA V6 3DX<span>Design Engineering</span></div>
+        <div class="tool-pill">MATLAB Simulink + TPT<span>System Controls</span></div>
+        <div class="tool-pill">ANSYS FEA & CFD<span>Simulation</span></div>
+        <div class="tool-pill">Python ML<span>Software Engineering</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Technology & Process</div>
+      <h2>How we develop & validate embedded software</h2>
+      <p>A structured, model-based workflow from requirements through to hardware-validated, production-ready code.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <img src="images/scm-3d.png" alt="Model based design" width="1214" height="854" decoding="async" loading="lazy">
+        <h4>MATLAB Simulink</h4>
+        <p>Model-based design of control software for vehicle after-treatment systems, using open ECU blocksets for rapid algorithm development.</p>
+      </div>
+      <div class="tech-card">
+        <img src="images/vmodel.jpg" alt="Software lifecycle V-model" width="1392" height="1113" decoding="async" loading="lazy">
+        <h4>TPT (Time Partition Testing)</h4>
+        <p>Automated, requirement-driven testing across the full verification and validation lifecycle.</p>
+      </div>
+      <div class="tech-card">
+        <img src="images/hardware-testing.jpg" alt="Hardware in the loop testing" width="1049" height="258" decoding="async" loading="lazy">
+        <h4>Hardware Testing</h4>
+        <p>Wind River Diab compiler code generation and calibration on real SCR cabinet hardware for early issue detection.</p>
+      </div>
+      <div class="tech-card">
+        <img src="images/hmi-display.jpg" alt="HMI display" width="1544" height="914" decoding="async" loading="lazy">
+        <h4>HMI Display</h4>
+        <p>Human-machine interface programming and validation for in-vehicle and diagnostic display systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to scope your next engineering programme?</h2>
+    <p>Tell us about your design, simulation, controls or software challenge — our team will get back to you within one business day.</p>
+    <a href="#contact" class="btn btn-primary">Contact Wallace Cartwright & Co</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Let's talk about your project</h2>
+      <p>Share a few details and our engineering team will follow up to discuss scope, timelines and capability fit.</p>
+    </div>
+    <div class="contact-card" style="max-width:640px;margin:0 auto;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:40px;">
+      <form id="contactForm" novalidate style="display:grid;gap:16px;">
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="field"><input name="name" id="f-name" placeholder="Full name" autocomplete="name" maxlength="120" required aria-describedby="e-name" style="padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;"><span class="field-error" id="e-name" role="alert"></span></div>
+          <div class="field"><input name="company" id="f-company" placeholder="Company" autocomplete="organization" maxlength="160" style="padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;"></div>
+        </div>
+        <div class="field"><input type="email" name="email" id="f-email" placeholder="Work email" autocomplete="email" maxlength="160" required aria-describedby="e-email" style="padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;"><span class="field-error" id="e-email" role="alert"></span></div>
+        <div class="field"><textarea name="message" id="f-message" placeholder="Tell us about your project" rows="4" maxlength="5000" required aria-describedby="e-message" style="padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;font-family:inherit;"></textarea><span class="field-error" id="e-message" role="alert"></span></div>
+        <input type="text" name="website" id="f-website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" id="submitBtn" class="btn btn-primary" style="border:none;cursor:pointer;">Send Enquiry</button>
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4 style="color:#fff;font-size:16px;">WALLACE CARTWRIGHT & CO LTD</h4>
+        <p>Integrated Mechanical, Electronics and Software engineering services for the automotive and industrial sectors.</p>
+      </div>
+      <div>
+        <h4>Capabilities</h4>
+        <a href="#services">Design Engineering</a>
+        <a href="#services">CAE — FEA / CFD</a>
+        <a href="#services">Technical Writing</a>
+        <a href="#services">System Controls</a>
+        <a href="#services">Software Engineering</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#why">Why Us</a>
+        <a href="#cases">Use Cases</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>United Kingdom</p>
+        <a href="mailto:wallacecartwrightpippa@gmail.com">wallacecartwrightpippa@gmail.com</a>
+        <a href="tel:+447388932400">+44 7388 932400</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Wallace Cartwright & Co Ltd. All rights reserved.</span>
+      <span>Engineering capabilities across Design, CAE, Controls & Software.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Mobile navigation ===== */
+(function(){
+  var toggle=document.getElementById('menuToggle'), links=document.getElementById('navlinks');
+  if(!toggle||!links) return;
+  function setOpen(open){
+    links.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+    toggle.innerHTML=open?'&#10005;':'&#9776;';
+  }
+  toggle.addEventListener('click',function(){ setOpen(!links.classList.contains('open')); });
+  links.addEventListener('click',function(e){ if(e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') setOpen(false); });
+  document.addEventListener('click',function(e){ if(!e.target.closest('header')) setOpen(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>960) setOpen(false); });
+})();
+
+/* ===== Contact form -> Google Sheets (Google Apps Script Web App) ===== */
+var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVCfwfp0_rjNLtpJe_2i3lLWOYAnWo9yt5UWD-KjjXuvbDfSfilg2zT2HkMZPOn_G4Gg/exec';
+
+(function(){
+  var form=document.getElementById('contactForm'); if(!form) return;
+  var btn=document.getElementById('submitBtn'), status=document.getElementById('formStatus');
+  var btnLabel=btn.textContent, submitting=false;
+
+  function showStatus(type,msg){
+    status.className='form-status show '+type; status.textContent=msg;
+  }
+  function clearStatus(){ status.className='form-status'; status.textContent=''; }
+  function setError(input,msg){
+    var f=input.closest('.field'), e=f.querySelector('.field-error');
+    if(msg){ f.classList.add('invalid'); e.textContent=msg; input.setAttribute('aria-invalid','true'); }
+    else { f.classList.remove('invalid'); e.textContent=''; input.removeAttribute('aria-invalid'); }
+  }
+  function validate(){
+    var n=form.name, em=form.email, m=form.message, first=null, ok=true;
+    function check(el,msg){ setError(el,msg); if(msg){ ok=false; if(!first) first=el; } }
+    check(n, n.value.trim().length<2 ? 'Please enter your full name.' : '');
+    check(em, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim()) ? 'Please enter a valid email address.' : '');
+    check(m, m.value.trim().length<5 ? 'Please tell us a little about your project.' : '');
+    if(first) first.focus();
+    return ok;
+  }
+  ['name','email','message'].forEach(function(k){
+    form[k].addEventListener('input',function(){ setError(form[k],''); });
+  });
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(submitting) return;                       // block double clicks / double Enter
+    clearStatus();
+    if(!validate()) return;
+    if(form.website.value){                      // honeypot filled by a bot: pretend success, send nothing
+      form.reset(); showStatus('success','Thank you — your enquiry has been sent. Our team will get back to you within one business day.'); return;
+    }
+    var payload=JSON.stringify({                 // field names must match the Apps Script exactly
+      fullName:form.name.value.trim(),
+      company:form.company.value.trim(),
+      email:form.email.value.trim(),
+      projectDetails:form.message.value.trim()
+    });
+
+    submitting=true; btn.disabled=true; btn.textContent='Sending…';
+    var ctrl=('AbortController' in window)?new AbortController():null;
+    var timer=setTimeout(function(){ if(ctrl) ctrl.abort(); },20000);
+
+    fetch(GOOGLE_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:payload,redirect:'follow',signal:ctrl?ctrl.signal:undefined})
+      .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+      .then(function(data){
+        var failed=!data||typeof data!=='object'||data.result==='error'||data.status==='error'||data.success===false||data.error;
+        if(failed) throw new Error((data&&(data.message||data.error))||'Unexpected response');
+        form.reset();          // only clear the form on confirmed success
+        showStatus('success','Thank you — your enquiry has been sent. Our team will get back to you within one business day.');
+      })
+      .catch(function(err){
+        if(window.console) console.error('Form submission failed:',err);
+        showStatus('error','Sorry, something went wrong and your enquiry was not sent. Your details are still in the form — please check your connection and try again.');
+      })
+      .then(function(){
+        clearTimeout(timer); submitting=false; btn.disabled=false; btn.textContent=btnLabel;
+      });
+  });
+})();
+</script>
+
+</body>
+</html>
